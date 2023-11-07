@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 			//가입 성공할 경우 회원 정보를 세션에 저장
 			//세션 객체를 통해 클라이언트와 서버간에 전송할 데이터를 저장하고 공유하는 작업을 수행
 			//session "mno"라는 이름으로 데이터를 저장하는 역할을 함
-			//request : 현재 클라이언트의 요청에 대한 정보를 제족ㅇ하는 역할을 함.
+			//request : 현재 클라이언트의 요청에 대한 정보를 제공하는 역할을 함.
 			//session 이란? 웹이나 어플리케이션 상태를 유지하고 저장하기 위해서사용
 			//getSession() : request에서 현재세션을 가지고 옴
 			//setAttribute("mno", mno) : 세션의 데이터를 저장하는 메서드 , mno라는 이름으로 데이터를 저장하고, mno 변수 값이 해당 데이터로 설정되게 함
