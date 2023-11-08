@@ -59,6 +59,11 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("memail", memail);
 				session.setAttribute("mbirth", resultSet.getDate("MBirth"));
 				
+				//로그인 시간을 30분으로 설정
+				//Inactive : 비활성화 활동하지 않는상태
+				//Interval : 간격
+				session.setMaxInactiveInterval(1800); //30분 = 1800초
+				
 				//로그인에 성공하면 성공에 대한 데이터를 login_success에 전달해줌
 				response.sendRedirect("login_success.jsp");
 			} else {
