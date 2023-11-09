@@ -13,6 +13,7 @@ public class ProductDAO {
 	private static final String jdbcUsername = "khbank";
 	private static final String jdbcPassword = "khbank";
 	
+
 	public ProductDAO() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
