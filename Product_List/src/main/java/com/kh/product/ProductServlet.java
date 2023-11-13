@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ProductServlet")
 public class ProductServlet extends HttpServlet {
 	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String jdbcUsername = "khbank";
-	private static final String jdbcPassword = "khbank";
+	private static final String jdbcUsername = "kiga";
+	private static final String jdbcPassword = "kiga1234";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
