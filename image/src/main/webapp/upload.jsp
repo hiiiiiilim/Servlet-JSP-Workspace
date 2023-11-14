@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html>
+<html>+6-*/32-+
+
+
 <head>
 <meta charset="utf-8">
 <title>이미지 업로드</title>

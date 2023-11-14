@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <%@ page import="java.util.List" %>
+<%@ page import="paginationDAO.ProductsDAO" %>
+<%@ page import="paginationDAO.Products" %>
 <%@ page import="paginationDAO.ProductsDAO" %>
 <%@ page import="paginationDAO.Products" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Á¦Ç°¸ñ·Ï</title>
+<meta charset="UTF-8">
+<title>ì œí’ˆëª©ë¡</title>
 </head>
 <body>
 
@@ -23,8 +25,8 @@
 	%>
 	<table border = "1">
 		<tr>
-			<th>Á¦Ç°¸í</th>
-			<th>Á¦Ç°ÀÌ¸§</th>
+			<th>ì œí’ˆëª…</th>
+			<th>ì œí’ˆì´ë¦„</th>
 			
 		</tr>
 	<%
@@ -37,8 +39,8 @@
 	<%} %>
 	</table>
 	<%
-		//1. ÆäÀÌÁö³×ÀÌ¼Ç ¸µÅ©¸¦ »ý¼ºÇØÁÙ°ÍÀÌ°í, ¸µÅ©´Â page °ª¿¡ µû¶ó¼­ ´Ù¸£°Ô º¸ÀÏ °Í
-        int totalProducts = productsDAO.getTotalProducts(); //ÀüÃ¼ Á¦Ç° °¡Á®¿À±â
+		//1. íŽ˜ì´ì§€ë„¤ì´ì…˜ ë§í¬ë¥¼ ìƒì„±í•´ì¤„ê²ƒì´ê³ , ë§í¬ëŠ” page ê°’ì— ë”°ë¼ì„œ ë‹¤ë¥´ê²Œ ë³´ì¼ ê²ƒ
+        int totalProducts = productsDAO.getTotalProducts(); //ì „ì²´ ì œí’ˆ ê°€ì ¸ì˜¤ê¸°
         int totalPages = (int) Math.ceil((double) totalProducts / pageSize);
 
         for (int i = 1; i <= totalPages; i++) {
