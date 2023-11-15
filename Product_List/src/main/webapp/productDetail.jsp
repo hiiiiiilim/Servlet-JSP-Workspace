@@ -1,13 +1,80 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="com.kh.product.Product" %>
-<%@ page import="com.kh.product.ProductDAO" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page import ="com.kh.product.Product" %>
+<%@ page import ="com.kh.product.ProductDAO" %>
+<%@ page import = "com.kh.product.ProductComment" %>
+<%@ page import = "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-    <title>ì œí’ˆ ìƒì„¸ ì •ë³´</title>
-       <style>
+    <title>Á¦Ç° »ó¼¼ Á¤º¸</title>
+
+    
+</head>
+<body>
+    <h1>Á¦Ç° »ó¼¼ Á¤º¸</h1>
+
+    <%
+     	//String ProductIdParam = request.getParameter("productId");
+     	Product product = null;
+     	ArrayList<ProductComment> commentList = null;
+     
+        String productIdParam = request.getParameter("productId");
+        if (productIdParam != null) {
+            int productId = Integer.parseInt(productIdParam);
+            ProductDAO productDAO = new ProductDAO();
+            product = productDAO.getProductById(productId);
+            commentList = productDAO.getCommentsByProductId(product.getProductId());
+            
+    %>
+
+    <p>Á¦Ç° ID: <%= product.getProductId() %></p>
+    <p>Á¦Ç°¸í: <%= product.getProductName() %></p>
+    <p>Ä«Å×°í¸®: <%= product.getCategory() %></p>
+    <p>°¡°Ý: <%= product.getPrice() %></p>
+    <p>Àç°í ¼ö·®: <%= product.getStockQuantity() %></p>
+    <a href="update_product.jsp?productId=<%= product.getProductId() %>">Á¦Ç° ¼öÁ¤ÇÏ±â</a>
+    <%
+        } else {
+    %>
+    <p>»óÇ°À» Ã£À» ¼ö ¾ø½À´Ï´Ù..</p>
+    <%
+        }
+    %>
+    <!--  ´ñ±Û ¸ñ·Ï Ç¥½Ã -->
+    <h3>´ñ±Û¸ñ·Ï</h3>
+    <%
+    	//¸¸¾à¿¡ ´ñ±ÛÀÌ Á¸ÀçÇÑ´Ù¸é if
+    	if (commentList != null) {
+    		for (ProductComment comment : commentList){
+    %>
+    <!-- <p> ÀÛ¼ºÀÚÀÌ¸§ (ÀÛ¼ºÇÑ½Ã°£) : ´ñ±Û³»¿ë </p>-->
+    <p>
+    <%= comment.getCommenterName() %> (<%=comment.getCommentDate() %>) : 
+    <%= comment.getCommentText() %>
+    </p>
+    <% 
+    		}
+    	}
+    
+    %>
+    
+    <!--  ´ñ±Û Ãß°¡ Æû ÀÛ¼º! -->
+    <form action="AddCommentServlet" method="post">
+    
+    	<input type=text name="productID" value="<%= product != null ?product.getProductId() :"" %>"><br>
+    	
+    	<label for = "commentName"> ÀÌ¸§ : </label>
+    	<input type="text" name="commentName" required>
+    	<br>
+    	
+    	<label for="commentText"> ´ñ±Û ³»¿ë : </label>
+    	<textarea name="commentText" required></textarea>
+    	<br>
+    	
+    	<input type="submit" value="´ñ±ÛÃß°¡">
+    </form>
+    
+           <style>
 
         body {
             font-family: Arial, sans-serif;
@@ -48,22 +115,5 @@
             background-color: #e0e0e0;
         }
     </style>
-</head>
-<body>
-	<h1>ì œí’ˆ ìƒì„¸ ì •ë³´</h1>
-	<%
-		//String =  id ê°’ì„ ê°€ì§€ê³  ì˜¤ê² ë‹¤.
-		String productIdValue = request.getParameter("productId");
-		int productId = Integer.parseInt(productIdValue);
-		//DAO ìž‘ì—…
-		ProductDAO productDAO = new ProductDAO();
-		Product product = productDAO.getProductId(productId);
-	%>
-	<p>ì œí’ˆ ID: <%=product.getProductId() %></p>
-	<p>ì œí’ˆ ì´ë¦„: <%=product.getProductName() %></p>
-	<p>ì œí’ˆ ê°€ê²©: <%=product.getPrice() %></p>
-	<p>ì œí’ˆ ì¹´í…Œê³ ë¦¬: <%=product.getCategory() %></p>
-	<p>ìž¬ê³  ìˆ˜ëŸ‰: <%=product.getStockQuantity() %></p>
-	
 </body>
 </html>
