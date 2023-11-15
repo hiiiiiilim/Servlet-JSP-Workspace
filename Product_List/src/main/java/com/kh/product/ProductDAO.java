@@ -11,8 +11,8 @@ import java.util.List;
 
 public class ProductDAO {
 	private static final String jdbcURL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String jdbcUsername = "khmember";
-	private static final String jdbcPassword = "kh1234";
+	private static final String jdbcUsername = "khbank";
+	private static final String jdbcPassword = "khbank";
 	
 	public ProductDAO() {
 		try {
